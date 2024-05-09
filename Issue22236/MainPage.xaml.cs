@@ -38,7 +38,13 @@ public partial class MainPage : ContentPage
     private async Task DoImageResize()
     {
         var service = new SkiaImageLoadingService();
+#if WINDOWS
         using var image = service.FromStream(await FileSystem.OpenAppPackageFileAsync("dotnet_bot.scale-400.png"));
+#elif IOS
+        using var image = service.FromStream(await FileSystem.OpenAppPackageFileAsync("dotnet_bot@3x.png"));
+#else
+        using var image = service.FromStream(await FileSystem.OpenAppPackageFileAsync("/res/drawable-hdpi/dotnet_bot.png"));
+#endif
         if (_resizedImage != null) { _resizedImage.Dispose(); _resizedImage = null; }
 
         // Make sure our variable doesn't somehow get disposed
