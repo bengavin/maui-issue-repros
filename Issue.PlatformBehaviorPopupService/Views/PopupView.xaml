@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:popups="Retread.Mobile.Views.Popups"
+             xmlns:vm="clr-namespace:Issue.PlatformBehaviorPopupService.ViewModels"
+             x:DataType="vm:PopupViewModel"
+             x:Class="Issue.PlatformBehaviorPopupService.Views.PopupView"
+             CanBeDismissedByTappingOutsideOfPopup="False"
+             Color="Transparent">
+
+    <Border
+        Padding="0"
+        Stroke="Transparent"
+        MinimumHeightRequest="150"
+        Margin="0"
+        WidthRequest="330"
+        HorizontalOptions="CenterAndExpand"
+        BackgroundColor="DarkBlue">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+        </Border.StrokeShape>
+
+        <VerticalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
+            BackgroundColor="DarkBlue"
+            Margin="16">
+
+            <Label 
+                Text="{Binding PopupText}" 
+                TextColor="White"
+                LineBreakMode="WordWrap"
+                MaxLines="2"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="StartAndExpand"/>
+
+            <ActivityIndicator 
+                Color="White"
+                HeightRequest="30" 
+                Margin="0,16,0,0"
+                MinimumWidthRequest="30" 
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                IsVisible="True" 
+                IsRunning="True" />
+
+            <Button Margin="15"
+                    Clicked="Button_Clicked"
+                    Text="Close Popup"/>
+        </VerticalStackLayout>
+    </Border>
+
+
+</toolkit:Popup>
