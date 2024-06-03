@@ -18,7 +18,7 @@ public partial class MainPage : ContentPage
         Behaviors.Add(_behavior);
     }
 
-    private async void OnCounterClicked(object sender, EventArgs e)
+    private void OnCounterClicked(object sender, EventArgs e)
     {
         count++;
 
@@ -29,7 +29,7 @@ public partial class MainPage : ContentPage
 
         SemanticScreenReader.Announce(CounterBtn.Text);
 
-        await _popupService.ShowPopupAsync<PopupViewModel>(onPresenting: (vm) => vm.PopupText = CounterBtn.Text);
+        _popupService.ShowPopup<PopupViewModel>(onPresenting: (vm) => vm.PopupText = CounterBtn.Text);
     }
 }
 
